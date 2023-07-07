@@ -21,11 +21,11 @@ Okex V5 Golang API
 A complete golang wrapper for [Okex](https://www.okex.com) V5 API. Pretty simple and easy to use. For more info about
 Okex V5 API [read here](https://www.okex.com/docs-v5/en).
 
-Installation
+Forked from [amir-the-h/okex]
 -----------------
 
-```bash
-go get github.com/amir-the-h/okex@v1.1.4-alpha
+```
+github.com/amir-the-h/okex
 ```
 
 Usage
@@ -36,11 +36,11 @@ package main
 
 import (
   "context"
-  "github.com/amir-the-h/okex"
-  "github.com/amir-the-h/okex/api"
-  "github.com/amir-the-h/okex/events"
-  "github.com/amir-the-h/okex/events/public"
-  ws_public_requests "github.com/amir-the-h/okex/requests/ws/public"
+  "github.com/zwjlinl/okex"
+  "github.com/zwjlinl/okex/api"
+  "github.com/zwjlinl/okex/events"
+  "github.com/zwjlinl/okex/events/public"
+  ws_public_requests "github.com/zwjlinl/okex/requests/ws/public"
   "log"
 )
 

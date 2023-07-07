@@ -1,8 +1,8 @@
 package account
 
 import (
-	models "github.com/amir-the-h/okex/models/account"
-	"github.com/amir-the-h/okex/responses"
+	models "github.com/zwjlink/okex/models/account"
+	"github.com/zwjlink/okex/responses"
 )
 
 type (
