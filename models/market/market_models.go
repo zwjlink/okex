@@ -63,7 +63,7 @@ type (
 		Vol         float64
 		VolCcy      float64
 		VolCcyQuote float64
-		Confirm     int
+		Confirm     string
 		//TS          okex.JSONTime
 	}
 	IndexCandle struct {
@@ -137,7 +137,7 @@ func (o *OrderBookEntity) UnmarshalJSON(buf []byte) error {
 
 func (c *Candle) UnmarshalJSON(buf []byte) error {
 	var (
-		o, h, l, cl, vol, volCcy, ts, volCcyQuote, confirm string
+		ts, o, h, l, cl, vol, volCcy, volCcyQuote, confirm string
 		err                                                error
 	)
 	tmp := []interface{}{&ts, &o, &h, &l, &cl, &vol, &volCcy, &volCcyQuote, &confirm}
@@ -192,10 +192,7 @@ func (c *Candle) UnmarshalJSON(buf []byte) error {
 		return err
 	}
 
-	c.Confirm, err = strconv.Atoi(confirm)
-	if err != nil {
-		return err
-	}
+	c.Confirm = confirm
 
 	return nil
 }
