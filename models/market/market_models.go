@@ -55,6 +55,7 @@ type (
 		OrderNumbers    int
 	}
 	Candle struct {
+		Ts          int64
 		O           float64
 		H           float64
 		L           float64
@@ -63,7 +64,7 @@ type (
 		VolCcy      float64
 		VolCcyQuote float64
 		Confirm     int
-		TS          okex.JSONTime
+		//TS          okex.JSONTime
 	}
 	IndexCandle struct {
 		O  float64
@@ -153,7 +154,8 @@ func (c *Candle) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	//*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.Ts = time.UnixMilli(timestamp).UnixMilli()
 
 	c.O, err = strconv.ParseFloat(o, 64)
 	if err != nil {
@@ -181,6 +183,16 @@ func (c *Candle) UnmarshalJSON(buf []byte) error {
 	}
 
 	c.VolCcy, err = strconv.ParseFloat(volCcy, 64)
+	if err != nil {
+		return err
+	}
+
+	c.VolCcyQuote, err = strconv.ParseFloat(volCcyQuote, 64)
+	if err != nil {
+		return err
+	}
+
+	c.Confirm, err = strconv.Atoi(confirm)
 	if err != nil {
 		return err
 	}
